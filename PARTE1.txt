@@ -1,0 +1,63 @@
+PARTE 1
+  SQL_FILMES
+_________________________________________________________________________________________________________________
+
+MySQL MIN() and MAX() Functions
+---------------------------------------------------------------------------------------------------------------
+1. Faça uma consulta, onde no SELECT 
+mostre apenas qual é o valor do MENOR tempo de duração (do filme ou série);
+
+SELECT MIN(DURACAO_MINUTOS) AS duração
+FROM ENTRETERIMENTO;
+----------------------------------------------------------------------------------------------------------------
+2. Faça uma consulta, onde no SELECT 
+mostre apenas qual é o valor do MAIOR tempo de duração (do filme ou série);
+
+SELECT MAX(DURACAO_MINUTOS) AS duracao_maxima
+FROM ENTRETERIMENTO;
+-----------------------------------------------------------------------------------------------------------------
+3. Faça uma consulta SQL que 
+mostre qual é o filme ou série com MAIOR duração, qual TIPO (série ou filme) e qual é o tempo em minutos;
+
+SELECT NOME, TIPO, DURACAO_MINUTOS
+FROM ENTRETERIMENTO
+WHERE DURACAO_MINUTOS = (SELECT MAX(DURACAO_MINUTOS) FROM ENTRETERIMENTO);
+----------------------------------------------------------------------------------------------------------------
+4. Faça uma consulta SQL que 
+mostre qual é o filme ou série com MENOR duração, qual TIPO (série ou filme) e qual é o tempo em minutos;
+
+SELECT NOME, TIPO, DURACAO_MINUTOS
+FROM ENTRETERIMENTO
+WHERE DURACAO_MINUTOS = (SELECT MIN(DURACAO_MINUTOS) FROM ENTRETERIMENTO);
+________________________________________________________________________________________________________________
+
+MySQL COUNT(), AVG() and SUM() Functions
+_________________________________________________________________________________________________________________
+
+1. Faça uma SQL que mostre a quantidade de Séries
+
+SELECT COUNT(*) AS Quantidade_Series
+FROM ENTRETERIMENTO
+WHERE TIPO = 'série';
+------------------------------------------------------------------------------------------------------------------
+
+2. Faça uma SQL que mostre a quantidade de filmes:
+
+SELECT COUNT(*) AS Quantidade_Filmes
+FROM ENTRETERIMENTO
+WHERE TIPO = 'filme';
+--------------------------------------------------------------------------------------------------------------------
+
+3. Faça uma consulta SQL que mostre o tempo de duração média das séries:
+
+SELECT AVG(DURACAO_MINUTOS) AS Duracao_Media_Series
+FROM ENTRETERIMENTO
+WHERE TIPO = 'série';
+----------------------------------------------------------------------------------------------------------------------
+
+4. SOME a duração (em minutos) dos filmes do Brad Pitt
+
+SELECT SUM(DURACAO_MINUTOS) AS Duracao_Total_Filmes_Brad_Pitt
+FROM ENTRETERIMENTO
+WHERE TIPO = 'filme' AND ATOR_PRINCIPAL LIKE '%Brad Pitt%';
+_______________________________________________________________________________________________________________________

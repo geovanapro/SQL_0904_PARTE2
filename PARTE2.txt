@@ -1,0 +1,35 @@
+PARTE 2
+---------------------------------------------------------------------------------------------------------
+1.FAÇA UMA CONSULTA SQL QUE MOSTRE A QUANTIDADE DE SÉRIES QUE CONTÉM A LETRA "N"
+
+SELECT COUNT(*) AS Quantidade_Series_Com_N
+FROM ENTRETERIMENTO
+WHERE TIPO = 'série' AND NOME LIKE '%N%';
+----------------------------------------------------------------------------------------------------------
+2.FAÇA UMA CONSULTA SQL QUE MOSTRE A QUANTIDADE DE FILMES QUE CONTÉM A LETRA "O"
+
+SELECT COUNT(*) AS Quantidade_Filmes_Com_O
+FROM ENTRETERIMENTO
+WHERE TIPO = 'filme' AND NOME LIKE '%O%';
+-----------------------------------------------------------------------------------------------------------
+3.FAÇA UMA CONSILTA SQL QUE MOSTRE O TEMPO DE DURAÇÃO MÉDIA DAS SÉRIES QUE COMECEM COM "W"
+
+SELECT AVG(DURACAO_MINUTOS) AS Duracao_Media_Series_Com_W
+FROM ENTRETERIMENTO
+WHERE TIPO = 'série' AND NOME LIKE 'W%';
+------------------------------------------------------------------------------------------------------------
+4.SOME A DURAÇÃO (EM MINUTOS) DOS FILMES DO BRAD PITT QUE TENHA A LETRA "E"
+
+SELECT SUM(DURACAO_MINUTOS) AS Duracao_Total_Filmes_Brad_Pitt_Com_E
+FROM ENTRETERIMENTO
+WHERE TIPO = 'filme' AND ATOR_PRINCIPAL LIKE '%Brad Pitt%' AND NOME LIKE '%E%';
+--------------------------------------------------------------------------------------------------------------
+5-CLASSIFIQUE A DURAÇÃO EM MINUTOS DOS FILMES DE MAIOR PARA MENOR QUE CONTENHA A LETRA "S"
+
+SELECT NOME, SUM(DURACAO_MINUTOS) AS Duracao_Total
+FROM ENTRETERIMENTO
+WHERE TIPO = 'filme' AND NOME LIKE '%S%'
+
+----------------------------------------------------------------------------------------------------------------
+GROUP BY NOME
+ORDER BY Duracao_Total DESC;
